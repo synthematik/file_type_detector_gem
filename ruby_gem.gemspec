@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "lib/ruby_gem/version"
+require_relative "lib/file_type_detector/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "ruby_gem"
-  spec.version = RubyGem::VERSION
-  spec.authors = ["Garik"]
+  spec.name = "file_type_detector"
+  spec.version = FileTypeDetector::VERSION
+  spec.authors = ["Garik", "watermelon0guy"]
   spec.email = ["garfild_2003@mail.ru"]
 
   spec.summary = "TODO: Write a short summary, because RubyGems requires one."
