@@ -1,19 +1,19 @@
-# file_type_detector
+# file_type_detector_sfedu
 
-**file_type_detector** is a Ruby gem that allows you to determine the type of files based on their extension or content.
+**file_type_detector_sfedu** is a Ruby gem that allows you to determine the type of files based on their extension or content.
 
 ## Installation
 
 Add this gem to your Gemfile and run `bundle install`:
 
 ```ruby
-gem 'file_type_detector'
+gem 'file_type_detector_sfedu'
 ```
 
 Alternatively, install it directly using the gem command:
 
 ```ruby
-gem install file_type_detector
+gem install file_type_detector_sfedu
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ gem install file_type_detector
 To use the gem, you need to create an instance of FileTypeDetector::FileTypeDetector, specifying the path to the file as the constructor argument. Then call the detect method to determine the file type.
 
 ```ruby
-require 'file_type_detector'
+require 'file_type_detector_sfedu'
 
 detector = FileTypeDetector::FileTypeDetector.new('path/to/your/file.pdf')
 puts detector.detect
