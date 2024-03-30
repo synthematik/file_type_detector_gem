@@ -9,17 +9,14 @@ module FileTypeDetector
 
   class FileTypeDetector
     def initialize(file_path)
+      unless File.exist?(file_path)
+        raise IOError, "File '#{file_path}' not found"
+      end
       @file_path = file_path
     end
 
     def detect
-      detector.detect
-    end
-
-    private
-
-    def detector
-      detectors.detect { |detector| detector.supported? }
+      detectors.find(&:supported?).check
     end
 
     def detectors
@@ -41,7 +38,7 @@ module FileTypeDetector
       raise NotImplementedError, "#{self.class} must implement supported?"
     end
 
-    def detect
+    def check
       raise NotImplementedError, "#{self.class} must implement detect"
     end
   end
@@ -52,44 +49,22 @@ module FileTypeDetector
       File.extname(@file_path).downcase == '.pdf'
     end
 
-    def detect
+    def check
       # Определяем тип PDF-файла
-      if File.read(@file_path, 5) == '%PDF-'
-        'PDF'
-      else
-        'Unknown' # Если содержимое файла не соответствует формату PDF
-      end
+      File.read(@file_path, 5) == '%PDF-'
     end
   end
 
-  # Detector for PNG files
+  # Detector for PNG filesбля
   class PNGDetector < Detector
     def supported?
       File.extname(@file_path).downcase == '.png'
     end
 
-    def detect
+    def check
       # Определяем тип PNG-файла, возможно, с помощью какой-то библиотеки для работы с изображениями
-      # В данном примере просто возвращаем строку 'PNG'
-      'PNG'
+      false
     end
   end
 
-end
-
-def detect_file_type(file_path)
-  File.open(file_path, 'rb') do |file|
-    header = file.read(4)
-    if header.start_with?('%PDF')
-      return 'PDF'
-    elsif header.start_with?('GIF8')
-      return 'GIF'
-    elsif header.start_with?("\x89PNG\r\n\x1A\n")
-      return 'PNG'
-    elsif header.start_with?("\xFF\xD8\xFF")
-      return 'JPEG'
-    else
-      return 'Неизвестный тип файла'
-    end
-  end
 end
