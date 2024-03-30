@@ -19,29 +19,25 @@ class TestFileTypeDetectors < Minitest::Test
   def test_raise_err_on_nonexistent_file
     non_existent_file_path = 'nonexistent_file.pdf'
 
-    assert_raises(IOError) { FileTypeDetector::FileTypeDetector.new(non_existent_file_path) }
+    assert_raises(IOError) { FileTypeDetector.check(non_existent_file_path) }
   end
 
   def test_detect_pdf
-    detector = FileTypeDetector::FileTypeDetector.new(@file_path)
-    assert detector.detect
+    assert FileTypeDetector.check(@file_path)
   end
 
   def test_detect_non_pdf
     File.write(@file_path, 'This is not a PDF content')
 
-    detector = FileTypeDetector::FileTypeDetector.new(@file_path)
-    refute detector.detect
+    refute FileTypeDetector.check(@file_path)
   end
 
   def test_real_pdf
-    detector = FileTypeDetector::FileTypeDetector.new("test/test_res/real_pdf.pdf")
-    assert detector.detect
+    assert FileTypeDetector.check("test/test_res/real_pdf.pdf")
   end
 
   def test_fake_pdf
-    detector = FileTypeDetector::FileTypeDetector.new("test/test_res/real_png.pdf")
-    refute detector.detect
+    refute FileTypeDetector.check("test/test_res/real_png.pdf")
   end
 
 end
