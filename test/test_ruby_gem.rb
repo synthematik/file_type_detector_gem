@@ -8,8 +8,8 @@ class TestFileTypeDetectors < Minitest::Test
   end
 
   def setup
-    @file_path = 'test_file.pdf'
-    File.write(@file_path, '%PDF-12345 Some content here')
+    @file_path = "test_file.pdf"
+    File.write(@file_path, "%PDF-12345 Some content here")
   end
 
   def teardown
@@ -17,7 +17,7 @@ class TestFileTypeDetectors < Minitest::Test
   end
 
   def test_raise_err_on_nonexistent_file
-    non_existent_file_path = 'nonexistent_file.pdf'
+    non_existent_file_path = "nonexistent_file.pdf"
 
     assert_raises(IOError) { FileTypeDetector.check(non_existent_file_path) }
   end
@@ -27,7 +27,7 @@ class TestFileTypeDetectors < Minitest::Test
   end
 
   def test_detect_non_pdf
-    File.write(@file_path, 'This is not a PDF content')
+    File.write(@file_path, "This is not a PDF content")
 
     refute FileTypeDetector.check(@file_path)
   end
@@ -39,5 +39,4 @@ class TestFileTypeDetectors < Minitest::Test
   def test_fake_pdf
     refute FileTypeDetector.check("test/test_res/real_png.pdf")
   end
-
 end
