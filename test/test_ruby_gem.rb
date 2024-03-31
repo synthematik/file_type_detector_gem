@@ -40,3 +40,19 @@ class TestFileTypeDetectors < Minitest::Test
     refute FileTypeDetector.check("test/test_res/real_png.pdf")
   end
 end
+
+
+class TestDocxFile < Minitest::Test
+  def test_real_docx
+    assert FileTypeDetector.docx_check("test/test_docx_examples/real_docx.docx")
+  end
+
+  def test_fake_docx
+    refute FileTypeDetector.docx_check("test/test_docx_examples/fake_docx.docx")
+  end
+
+  def test_not_docx
+    refute FileTypeDetector.docx_check("test/test_docx_examples/real_jpg.jpg")
+  end
+
+end
