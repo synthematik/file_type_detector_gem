@@ -26,6 +26,10 @@ module FileTypeDetector
     File.read(file_path, 5) == "%PDF-"
   end
 
+  def self.docx_check(file_path)
+    File.read(file_path, 5) == ""
+  end
+
 
 
   # =============================================
