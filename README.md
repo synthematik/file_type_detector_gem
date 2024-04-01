@@ -32,7 +32,9 @@ Please replace `"path/to/your/file.pdf"` with the path to your file that you wan
 The gem provides support for detecting the following file types:
 
 - PDF
+- DOCX
 - PNG
+- JPEG
 
 ## Contributing
 

@@ -35,6 +35,7 @@ module FileTypeDetector
   # =============================================
   FILE_CHECKS = [
     method(:pdf_check),
+    method(:docx_check),
     # добавить сюда свой метод
   ].freeze
 
