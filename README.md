@@ -7,7 +7,7 @@
 Add this gem to your Gemfile and run `bundle install`:
 
 ```ruby
-gem 'file_type_detector_sfedu'
+gem "file_type_detector_sfedu"
 ```
 
 Alternatively, install it directly using the gem command:
@@ -21,10 +21,9 @@ gem install file_type_detector_sfedu
 To use the gem, you need to create an instance of FileTypeDetector::FileTypeDetector, specifying the path to the file as the constructor argument. Then call the detect method to determine the file type.
 
 ```ruby
-require 'file_type_detector_sfedu'
+require "file_type_detector_sfedu"
 
-detector = FileTypeDetector::FileTypeDetector.new('path/to/your/file.pdf')
-puts detector.detect
+puts FileTypeDetector.check("path/to/your/file.pdf") # if it's truly pdf, value will be true, unless - false
 ```
 Please replace `"path/to/your/file.pdf"` with the path to your file that you want to check.
 

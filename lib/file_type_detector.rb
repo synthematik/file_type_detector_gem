@@ -27,7 +27,7 @@ module FileTypeDetector
   end
 
   def self.docx_check(file_path)
-    File.open(file_path, 'rb') { |file| file.read(4) } == "PK\x03\x04"
+    File.open(file_path, "rb") { |file| file.read(4) } == "PK\x03\x04"
   end
 
 

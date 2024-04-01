@@ -44,15 +44,15 @@ end
 
 class TestDocxFile < Minitest::Test
   def test_real_docx
-    assert FileTypeDetector.docx_check("test/test_docx_examples/real_docx.docx")
+    assert FileTypeDetector.docx_check("test/test_res/test_docx_resources/real_docx.docx")
   end
 
   def test_fake_docx
-    refute FileTypeDetector.docx_check("test/test_docx_examples/fake_docx.docx")
+    refute FileTypeDetector.docx_check("test/test_res/test_docx_resources/fake_docx.docx")
   end
 
   def test_not_docx
-    refute FileTypeDetector.docx_check("test/test_docx_examples/real_jpg.jpg")
+    refute FileTypeDetector.docx_check("test/test_res/test_png_resources/real_png.png")
   end
 
 end
