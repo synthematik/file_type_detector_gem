@@ -18,22 +18,30 @@ gem install file_type_detector_sfedu
 
 ## Usage
 
-To use the gem, you need to create an instance of FileTypeDetector::FileTypeDetector, specifying the path to the file as the constructor argument. Then call the detect method to determine the file type.
-
+To use the gem, you need to call the `check` method with a parameter in the form of a file path:
 ```ruby
 require "file_type_detector_sfedu"
 
 puts FileTypeDetector.check("path/to/your/file.pdf") # if it's truly pdf, value will be true, unless - false
 ```
-Please replace `"path/to/your/file.pdf"` with the path to your file that you want to check.
+`check` method will automatically detect the file type by its extension and tell if its contents match the extension.
+
+You can also use a specific detector:
+```ruby
+puts FileTypeDetector.pdf_check("path/to/your/real_pdf.pdf") # true
+puts FileTypeDetector.pdf_check("path/to/your/fake_pdf.pdf") # false
+
+puts FileTypeDetector.pdf_check("path/to/your/real_docx.docx") # true
+puts FileTypeDetector.pdf_check("path/to/your/fake_docx.docx") # false
+```
 
 ## Supported File Types
 The gem provides support for detecting the following file types:
 
 - PDF
 - DOCX
-- PNG
-- JPEG
+- PNG(TODO)
+- JPEG(TODO)
 
 ## Contributing
 
