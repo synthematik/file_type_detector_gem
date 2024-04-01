@@ -43,10 +43,11 @@ The gem provides support for detecting the following file types:
 - PNG(TODO)
 - JPEG(TODO)
 
-## Contributing
+## Contributing and links
 
 You can contribute to the development of the gem by creating new detectors for other file types and improving existing code. Report bugs and submit feature requests through the [GitHub repository](https://github.com/synthematik/file_type_detector_gem).
 
+You can visit our gem's page here - [Rubygems.org](https://rubygems.org/gems/file_type_detector_sfedu)
 ## License
 
 This gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
