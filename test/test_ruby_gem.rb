@@ -63,3 +63,18 @@ class TestError < Minitest::Test
     assert FileTypeDetector.error_handling("test/test_resources/test_png_resources/real_png.png")
   end
 end
+
+class TestPngCheck < Minitest::Test
+  def test_real_png
+    assert FileTypeDetector.png_check("test/test_resources/test_png_resources/real_png.png")
+  end
+
+  def test_fake_png
+    refute FileTypeDetector.png_check("test/test_resources/test_png_resources/real_pdf.png")
+  end
+
+  def test_not_png
+    refute FileTypeDetector.png_check("test/test_resources/test_docx_resources/real_docx.docx")
+  end
+  
+end

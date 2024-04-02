@@ -42,7 +42,12 @@ module FileTypeDetector
     end
   end
 
-
+  def self.png_check(file_path)
+    if error_handling(file_path)
+      first_bytes = File.open(file_path, 'rb') { |file| file.read(16) }
+      first_bytes.start_with?("\x89PNG\r\n\x1A\n".b)
+    end
+  end
 
   # =============================================
   FILE_CHECKS = [
