@@ -78,3 +78,17 @@ class TestPngCheck < Minitest::Test
   end
   
 end
+
+class TestGifCheck < Minitest::Test
+  def test_real_gif
+    assert FileTypeDetector.gif_check("test/test_resources/test_gif_resources/real_gif_1.gif")
+  end
+
+  def test_fake_gif
+    refute FileTypeDetector.gif_check("test/test_resources/test_gif_resources/fake_gif.gif")
+  end
+
+  def test_not_gif
+    refute FileTypeDetector.gif_check("test/test_resources/test_png_resources/real_png.png")
+  end
+end
