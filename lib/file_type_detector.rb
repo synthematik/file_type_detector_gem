@@ -49,6 +49,13 @@ module FileTypeDetector
     end
   end
 
+  def self.gif_check(file_path)
+    if error_handling(file_path)
+      first_bytes = File.open(file_path, 'rb') { |file| file.read(6) }
+      first_bytes == "GIF87a" || first_bytes == "GIF89a"
+    end
+  end
+
   # =============================================
   FILE_CHECKS = [
     method(:pdf_check),
