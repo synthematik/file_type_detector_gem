@@ -66,12 +66,17 @@ module FileTypeDetector
     first_bytes == "\xFF\xD8".b
 
   end
+
+  def self.jpg_check(file_path)
+    jpeg_check(file_path)
+  end
   # =============================================
   FILE_CHECKS = [
     method(:pdf_check),
     method(:docx_check),
     method(:png_check),
-    method(:gif_check)
+    method(:gif_check),
+    method(:jpeg_check),
     # Add your methods here
   ].freeze
 
