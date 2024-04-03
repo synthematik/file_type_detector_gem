@@ -31,8 +31,8 @@ You can also use a specific detector:
 puts FileTypeDetector.pdf_check("path/to/your/real_pdf.pdf") # true
 puts FileTypeDetector.pdf_check("path/to/your/fake_pdf.pdf") # false
 
-puts FileTypeDetector.pdf_check("path/to/your/real_docx.docx") # true
-puts FileTypeDetector.pdf_check("path/to/your/fake_docx.docx") # false
+puts FileTypeDetector.docx_check("path/to/your/real_docx.docx") # true
+puts FileTypeDetector.docx_check("path/to/your/fake_docx.docx") # false
 ```
 
 ## Supported File Types
@@ -40,8 +40,10 @@ The gem provides support for detecting the following file types:
 
 - PDF
 - DOCX
-- PNG(TODO)
+- PNG
+- GIF
 - JPEG(TODO)
+- ZIP(TODO)
 
 ## Contributing and links
 
