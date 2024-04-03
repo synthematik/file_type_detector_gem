@@ -89,3 +89,18 @@ class TestGifCheck < Minitest::Test
     refute FileTypeDetector.gif_check("test/test_resources/test_png_resources/real_png.png")
   end
 end
+
+
+class TestJpegCheck < Minitest::Test
+  def test_real_jpeg
+    assert FileTypeDetector.jpeg_check("test/test_resources/test_jpeg_resources/real_jpeg.jpeg")
+  end
+
+  def test_fake_jpeg
+    refute FileTypeDetector.jpeg_check("test/test_resources/test_jpeg_resources/fake_jpeg.jpeg")
+  end
+
+  def test_not_jpeg
+    refute FileTypeDetector.jpeg_check("test/test_resources/test_png_resources/real_png.png")
+  end
+end
