@@ -20,7 +20,6 @@ class TestPDFCheck < Minitest::Test
   end
 end
 
-
 class TestDocxCheck < Minitest::Test
   def test_real_docx
     assert FileTypeDetector.docx_check("test/test_resources/test_docx_resources/real_docx.docx")
@@ -34,7 +33,6 @@ class TestDocxCheck < Minitest::Test
     refute FileTypeDetector.docx_check("test/test_resources/test_png_resources/real_png.png")
   end
 end
-
 
 class TestError < Minitest::Test
   def test_file_not_exist
@@ -76,7 +74,6 @@ class TestPngCheck < Minitest::Test
   def test_not_png
     refute FileTypeDetector.png_check("test/test_resources/test_docx_resources/real_docx.docx")
   end
-  
 end
 
 class TestGifCheck < Minitest::Test

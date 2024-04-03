@@ -13,6 +13,6 @@
   - The functions have been optimized
   - Removed unnecessary code
   - Added error handling
-  - Added functions for checking new types of extensions: png and jpeg
+  - Added functions for checking new types of extensions: png, jpeg, gif
 - Updated the readme file
 - Other minor improvements

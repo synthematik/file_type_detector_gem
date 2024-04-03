@@ -27,39 +27,44 @@ module FileTypeDetector
     true
   end
 
-
   # =============================================
   # Write your methods here
   def self.pdf_check(file_path)
-    if error_handling(file_path)
-      File.read(file_path, 5) == "%PDF-"
-    end
+    return unless error_handling(file_path)
+
+    File.read(file_path, 5) == "%PDF-"
+
   end
 
   def self.docx_check(file_path)
-    if error_handling(file_path)
-      File.open(file_path, "rb") { |file| file.read(4) } == "PK\x03\x04"
-    end
+    return unless error_handling(file_path)
+
+    File.open(file_path, "rb") { |file| file.read(4) } == "PK\x03\x04"
+
   end
 
   def self.png_check(file_path)
-    if error_handling(file_path)
-      first_bytes = File.open(file_path, 'rb') { |file| file.read(16) }
-      first_bytes.start_with?("\x89PNG\r\n\x1A\n".b)
-    end
+    return unless error_handling(file_path)
+
+    first_bytes = File.open(file_path, "rb") { |file| file.read(16) }
+    first_bytes.start_with?("\x89PNG\r\n\x1A\n".b)
+
   end
 
   def self.gif_check(file_path)
-    if error_handling(file_path)
-      first_bytes = File.open(file_path, 'rb') { |file| file.read(6) }
-      first_bytes == "GIF87a" || first_bytes == "GIF89a"
-    end
+    return unless error_handling(file_path)
+
+    first_bytes = File.open(file_path, "rb") { |file| file.read(6) }
+    %w[GIF87a GIF89a].include?(first_bytes)
+
   end
 
   # =============================================
   FILE_CHECKS = [
     method(:pdf_check),
     method(:docx_check),
+    method(:png_check),
+    method(:gif_check)
     # Add your methods here
   ].freeze
 
