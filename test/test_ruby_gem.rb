@@ -104,3 +104,18 @@ class TestJpegCheck < Minitest::Test
     refute FileTypeDetector.jpeg_check("test/test_resources/test_png_resources/real_png.png")
   end
 end
+
+class TestJsonCheck < Minitest::Test
+  def test_fake_json
+    refute FileTypeDetector.json_check("test/test_resources/test_json_resources/fake_json.json")
+  end
+
+  def test_real_json
+    assert FileTypeDetector.json_check("test/test_resources/test_json_resources/real_json.json")
+  end
+
+  def test_not_json
+    refute FileTypeDetector.json_check("test/test_resources/test_png_resources/real_png.png")
+  end
+
+end
