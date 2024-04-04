@@ -70,6 +70,15 @@ module FileTypeDetector
   def self.jpg_check(file_path)
     jpeg_check(file_path)
   end
+
+  def self.json_check(file_path)
+    return unless error_handling(file_path)
+
+    first_chars = File.open(file_path, "rb") { |file| file.read(2) }
+    first_chars.start_with?("{") || first_chars.start_with?("[")
+  end
+
+
   # =============================================
   FILE_CHECKS = [
     method(:pdf_check),
