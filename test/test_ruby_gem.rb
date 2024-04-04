@@ -119,3 +119,19 @@ class TestJsonCheck < Minitest::Test
   end
 
 end
+
+
+class TestXMLCheck < Minitest::Test
+  def test_real_xml
+    assert FileTypeDetector.xml_check("test/test_resources/test_xml_resources/real_xml.xml")
+  end
+
+  def test_fake_xml
+    refute FileTypeDetector.xml_check("test/test_resources/test_xml_resources/fake_xml.xml")
+  end
+
+  def test_not_xml
+    refute FileTypeDetector.xml_check("test/test_resources/test_png_resources/real_png.png")
+  end
+
+end
