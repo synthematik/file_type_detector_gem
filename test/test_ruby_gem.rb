@@ -90,7 +90,6 @@ class TestGifCheck < Minitest::Test
   end
 end
 
-
 class TestJpegCheck < Minitest::Test
   def test_real_jpeg
     assert FileTypeDetector.jpeg_check("test/test_resources/test_jpeg_resources/real_jpeg.jpeg")
@@ -117,9 +116,7 @@ class TestJsonCheck < Minitest::Test
   def test_not_json
     refute FileTypeDetector.json_check("test/test_resources/test_png_resources/real_png.png")
   end
-
 end
-
 
 class TestXMLCheck < Minitest::Test
   def test_real_xml
@@ -133,5 +130,4 @@ class TestXMLCheck < Minitest::Test
   def test_not_xml
     refute FileTypeDetector.xml_check("test/test_resources/test_png_resources/real_png.png")
   end
-
 end

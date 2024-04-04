@@ -42,8 +42,9 @@ The gem provides support for detecting the following file types:
 - DOCX
 - PNG
 - GIF
-- JPEG(TODO)
-- ZIP(TODO)
+- JPEG/JPG
+- JSON
+- XML
 
 ## Contributing and links
 
