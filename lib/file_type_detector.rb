@@ -62,7 +62,7 @@ module FileTypeDetector
   def self.jpeg_check(file_path)
     return unless error_handling(file_path)
 
-    first_bytes = File.open(file_path, 'rb') { |file| file.read(2) }
+    first_bytes = File.open(file_path, "rb") { |file| file.read(2) }
     first_bytes == "\xFF\xD8".b
 
   end
@@ -78,6 +78,12 @@ module FileTypeDetector
     first_chars.start_with?("{") || first_chars.start_with?("[")
   end
 
+  def self.xml_check(file_path)
+    return unless error_handling(file_path)
+
+    (File.open(file_path, "rb") { |file| file.read(2) }) == "<?"
+
+  end
 
   # =============================================
   FILE_CHECKS = [
