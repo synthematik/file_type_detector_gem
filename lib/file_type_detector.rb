@@ -92,6 +92,9 @@ module FileTypeDetector
     method(:png_check),
     method(:gif_check),
     method(:jpeg_check),
+    method(:jpg_check),
+    method(:json_check),
+    method(:xml_check),
     # Add your methods here
   ].freeze
 
