@@ -6,7 +6,7 @@
 - Initial release
 
 
-## [0.2.0] - 2024-03-2
+## [0.2.0] - 2024-03-5
 
 - Tests have been updated to test functions more correctly
 - The existing code has been significantly improved:
