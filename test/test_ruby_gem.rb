@@ -20,6 +20,32 @@ class TestPDFCheck < Minitest::Test
   end
 end
 
+class TestIdentify < Minitest::Test
+  def test_identify_real_pdf
+    assert "pdf", FileTypeDetector.identify("test/test_resources/test_pdf_resources/real_pdf.pdf")
+  end
+
+  def test_identify_fake_pdf
+    assert "png", FileTypeDetector.identify("test/test_resources/test_pdf_resources/real_png.pdf")
+  end
+
+  def test_identify_real_png
+    assert "png", FileTypeDetector.identify("test/test_resources/test_png_resources/real_png.png")
+  end
+
+  def test_identify_fake_png
+    assert "pdf", FileTypeDetector.identify("test/test_resources/test_png_resources/real_pdf.png")
+  end
+
+  def test_identify_real_docx
+    assert "docx", FileTypeDetector.identify("test/test_resources/test_docx_resources/real_docx.docx")
+  end
+
+  def test_identify_fake_docx
+    assert "docx", FileTypeDetector.identify("test/test_resources/test_docx_resources/real_pdf.docx")
+  end
+end
+
 class TestDocxCheck < Minitest::Test
   def test_real_docx
     assert FileTypeDetector.docx_check("test/test_resources/test_docx_resources/real_docx.docx")
