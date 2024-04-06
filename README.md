@@ -41,6 +41,7 @@ puts FileTypeDetector.identify("path/to/your/real_pdf.pdf")   # "pdf"
 puts FileTypeDetector.identify("path/to/your/real_xml.pdf")   # "xml"
 puts FileTypeDetector.identify("path/to/your/real_docx.docx") # docx
 puts FileTypeDetector.identify("path/to/your/real_jpeg.png")  # jpeg
+puts FileTypeDetector.identify("path/to/your/unknown.png")    # nil
 ```
 ## Supported File Types
 The gem provides support for detecting the following file types:
