@@ -28,13 +28,20 @@ puts FileTypeDetector.check("path/to/your/file.pdf") # if it's truly pdf, value 
 
 You can also use a specific detector:
 ```ruby
-puts FileTypeDetector.pdf_check("path/to/your/real_pdf.pdf") # true
-puts FileTypeDetector.pdf_check("path/to/your/fake_pdf.pdf") # false
+puts FileTypeDetector.pdf_check("path/to/your/real_pdf.pdf")    # true
+puts FileTypeDetector.pdf_check("path/to/your/fake_pdf.pdf")    # false
 
 puts FileTypeDetector.docx_check("path/to/your/real_docx.docx") # true
 puts FileTypeDetector.docx_check("path/to/your/fake_docx.docx") # false
 ```
 
+You can also run all the detectors on the file to determine its type using the `identify` method:
+```ruby
+puts FileTypeDetector.identify("path/to/your/real_pdf.pdf")   # "pdf"
+puts FileTypeDetector.identify("path/to/your/real_xml.pdf")   # "xml"
+puts FileTypeDetector.identify("path/to/your/real_docx.docx") # docx
+puts FileTypeDetector.identify("path/to/your/real_jpeg.png")  # jpeg
+```
 ## Supported File Types
 The gem provides support for detecting the following file types:
 
