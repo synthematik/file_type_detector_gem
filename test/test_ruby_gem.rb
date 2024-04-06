@@ -2,24 +2,6 @@
 
 require "./test/test_helper"
 
-class TestPDFCheck < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::FileTypeDetector::VERSION
-  end
-
-  def test_real_pdf
-    assert FileTypeDetector.check("test/test_resources/test_pdf_resources/real_pdf.pdf")
-  end
-
-  def test_fake_pdf
-    refute FileTypeDetector.check("test/test_resources/test_pdf_resources/real_png.pdf")
-  end
-
-  def test_not_pdf
-    refute FileTypeDetector.docx_check("test/test_resources/test_png_resources/real_png.png")
-  end
-end
-
 class TestIdentify < Minitest::Test
   def test_identify_real_pdf
     assert "pdf", FileTypeDetector.identify("test/test_resources/test_pdf_resources/real_pdf.pdf")
@@ -46,13 +28,31 @@ class TestIdentify < Minitest::Test
   end
 end
 
+class TestPDFCheck < Minitest::Test
+  def test_that_it_has_a_version_number
+    refute_nil ::FileTypeDetector::VERSION
+  end
+
+  def test_real_pdf
+    assert FileTypeDetector.pdf_check("test/test_resources/test_pdf_resources/real_pdf.pdf")
+  end
+
+  def test_fake_pdf
+    refute FileTypeDetector.pdf_check("test/test_resources/test_pdf_resources/real_png.pdf")
+  end
+
+  def test_not_pdf
+    refute FileTypeDetector.pdf_check("test/test_resources/test_png_resources/real_png.png")
+  end
+end
+
 class TestDocxCheck < Minitest::Test
   def test_real_docx
     assert FileTypeDetector.docx_check("test/test_resources/test_docx_resources/real_docx.docx")
   end
 
   def test_fake_docx
-    refute FileTypeDetector.docx_check("test/test_resources/test_docx_resources/fake_docx.docx")
+    refute FileTypeDetector.docx_check("test/test_resources/test_docx_resources/real_pdf.docx")
   end
 
   def test_not_docx
@@ -105,10 +105,11 @@ end
 class TestGifCheck < Minitest::Test
   def test_real_gif
     assert FileTypeDetector.gif_check("test/test_resources/test_gif_resources/real_gif_1.gif")
+    assert FileTypeDetector.gif_check("test/test_resources/test_gif_resources/real_gif_2.gif")
   end
 
   def test_fake_gif
-    refute FileTypeDetector.gif_check("test/test_resources/test_gif_resources/fake_gif.gif")
+    refute FileTypeDetector.gif_check("test/test_resources/test_gif_resources/real_png.gif")
   end
 
   def test_not_gif
@@ -122,7 +123,7 @@ class TestJpegCheck < Minitest::Test
   end
 
   def test_fake_jpeg
-    refute FileTypeDetector.jpeg_check("test/test_resources/test_jpeg_resources/fake_jpeg.jpeg")
+    refute FileTypeDetector.jpeg_check("test/test_resources/test_jpeg_resources/real_png.jpeg")
   end
 
   def test_not_jpeg
@@ -131,12 +132,12 @@ class TestJpegCheck < Minitest::Test
 end
 
 class TestJsonCheck < Minitest::Test
-  def test_fake_json
-    refute FileTypeDetector.json_check("test/test_resources/test_json_resources/fake_json.json")
-  end
-
   def test_real_json
     assert FileTypeDetector.json_check("test/test_resources/test_json_resources/real_json.json")
+  end
+
+  def test_fake_json
+    refute FileTypeDetector.json_check("test/test_resources/test_json_resources/real_xml.json")
   end
 
   def test_not_json
@@ -150,7 +151,7 @@ class TestXMLCheck < Minitest::Test
   end
 
   def test_fake_xml
-    refute FileTypeDetector.xml_check("test/test_resources/test_xml_resources/fake_xml.xml")
+    refute FileTypeDetector.xml_check("test/test_resources/test_xml_resources/real_json.xml")
   end
 
   def test_not_xml
