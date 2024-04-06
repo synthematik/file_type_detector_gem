@@ -5,7 +5,7 @@ require_relative "lib/file_type_detector/version"
 Gem::Specification.new do |spec|
   spec.name = "file_type_detector_sfedu"
   spec.version = FileTypeDetector::VERSION
-  spec.authors = ["Garik", "watermelon0guy", "synthematikj", "kamchatnaya"]
+  spec.authors = ["Garik Mnacakanyan", "Mikhail Babichev", "Maria Putrova", "Elena Kamchatnaya"]
   spec.email = ["garfild_2003@mail.ru"]
 
   spec.summary = "A gem for detecting file types based on their extensions or content."
