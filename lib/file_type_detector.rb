@@ -17,13 +17,16 @@ module FileTypeDetector
     false
   end
 
+  def self.identify(file_path)
+    FILE_CHECKS.find { |fn| fn.call(file_path)}.name.to_s.split("_")[0][1..]
+  end
+
   # =============================================
   # Error handling
   def self.error_handling(file_path)
     raise IOError, "File '#{file_path}' not found" unless File.exist?(file_path)
     raise IOError, "File '#{file_path}' is not a file" unless File.file?(file_path)
     raise IOError, "File '#{file_path}' is not available for reading" unless File.readable?(file_path)
-
     true
   end
 
@@ -33,14 +36,12 @@ module FileTypeDetector
     return unless error_handling(file_path)
 
     File.read(file_path, 5) == "%PDF-"
-
   end
 
   def self.docx_check(file_path)
     return unless error_handling(file_path)
 
     File.open(file_path, "rb") { |file| file.read(4) } == "PK\x03\x04"
-
   end
 
   def self.png_check(file_path)
@@ -48,7 +49,6 @@ module FileTypeDetector
 
     first_bytes = File.open(file_path, "rb") { |file| file.read(16) }
     first_bytes.start_with?("\x89PNG\r\n\x1A\n".b)
-
   end
 
   def self.gif_check(file_path)
@@ -56,7 +56,6 @@ module FileTypeDetector
 
     first_bytes = File.open(file_path, "rb") { |file| file.read(6) }
     %w[GIF87a GIF89a].include?(first_bytes)
-
   end
 
   def self.jpeg_check(file_path)
@@ -82,7 +81,6 @@ module FileTypeDetector
     return unless error_handling(file_path)
 
     (File.open(file_path, "rb") { |file| file.read(2) }) == "<?"
-
   end
 
   # =============================================
