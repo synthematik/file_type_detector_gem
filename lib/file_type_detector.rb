@@ -27,7 +27,7 @@ module FileTypeDetector
   def self.identify(file_path)
     return unless error_handling(file_path)
 
-    FILE_CHECKS.find { |fn| fn.call(file_path)}.name.to_s.split("_")[0][0..]
+    FILE_CHECKS.find { |fn| fn.call(file_path)}.name.to_s.split("_")[0]
   end
 
   # =============================================
