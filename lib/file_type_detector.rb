@@ -72,7 +72,7 @@ module FileTypeDetector
     return unless error_handling(file_path)
 
     first_bytes = File.open(file_path, "rb") { |file| file.read(16) }
-    first_bytes.start_with?("\x89PNG\r\n\x1A\n".b)
+    first_bytes&.start_with?("\x89PNG\r\n\x1A\n".b)
   end
 
   # Checks if the file has a GIF format.
