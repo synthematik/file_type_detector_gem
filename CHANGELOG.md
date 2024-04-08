@@ -22,3 +22,8 @@
 
 - Added documentation to all functions
 - Other minor improvements
+
+## [0.2.2] - 2024-04-08
+
+- Bug fixed
+- Other minor improvements
