@@ -24,7 +24,7 @@ class TestIdentify < Minitest::Test
   end
 
   def test_identify_fake_docx
-    assert_equal "docx", FileTypeDetector.identify("test/test_resources/test_docx_resources/real_pdf.docx")
+    assert_equal "pdf", FileTypeDetector.identify("test/test_resources/test_docx_resources/real_pdf.docx")
   end
 end
 
