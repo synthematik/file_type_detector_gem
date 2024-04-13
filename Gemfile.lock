@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    file_type_detector_sfedu (0.2.1)
+    file_type_detector_sfedu (0.2.2)
 
 GEM
   remote: https://rubygems.org/
